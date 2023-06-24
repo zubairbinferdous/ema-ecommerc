@@ -10,6 +10,7 @@ import "./Shop.css";
 const Shop = () => {
 
   const [products, setProducts] = useState([]);
+  
   const [cart , setCart] = useState([]);
 
   useEffect(() => {
@@ -37,7 +38,6 @@ const Shop = () => {
       </div>
 
       <div className="product_order">
-        <h5>Order Summary</h5>
         <Side total={cart}></Side>
       </div>
       

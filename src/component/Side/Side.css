@@ -2,6 +2,11 @@
   text-align: left;
   padding: 35px 40px;
   font-size: 13px;
+  position: sticky;
+  top: 0;
+  right: 0;
+  background-color: #ffe1b3;
+  height: 100vh;
 }
 .order_data h2 {
   font-size: 18px;
@@ -17,9 +22,15 @@
   background-color: red;
   color: aliceblue;
   border-radius: 5px;
+  width: 100%;
 }
 .yellow {
   background-color: orange;
   color: aliceblue;
   border-radius: 5px;
+  width: 100%;
+}
+
+.center {
+  text-align: center;
 }
