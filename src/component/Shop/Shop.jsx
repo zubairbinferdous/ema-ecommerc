@@ -2,17 +2,26 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 
+
 import Product from "../Product/Product.Jsx";
 import Side from "../Side/Side.jsx";
 import "./Shop.css";
 
 const Shop = () => {
+
   const [products, setProducts] = useState([]);
+  const [cart , setCart] = useState([]);
+
   useEffect(() => {
     fetch("products.json")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+
+  const addToCart = (ProductData) => {
+    const newCart = [...cart , ProductData]
+    setCart(newCart);
+  } 
 
   return (
     <div className="shop_container">
@@ -21,7 +30,7 @@ const Shop = () => {
         
         <div className="product_container">
           {products.map((product) => (
-            <Product key={product.id} product={product}></Product>
+            <Product key={product.id} product={product} addToCart={addToCart}></Product>
           ))}
         </div>
         
@@ -29,7 +38,7 @@ const Shop = () => {
 
       <div className="product_order">
         <h5>Order Summary</h5>
-        <Side></Side>
+        <Side total={cart}></Side>
       </div>
       
     </div>
