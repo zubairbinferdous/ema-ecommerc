@@ -49,6 +49,22 @@ const Shop = () => {
     addToDb(ProductData.id)
   } 
 
+  //   const addToCart = (ProductData) => {
+  //     let newCart = [];
+  //     const exists = cart.find(pd => pd.id === ProductData.id);
+      
+  //     if(!exists){
+  //       ProductData.quantity = 1 ;
+  //       newCart = [...cart , ProductData]
+  //     }else{
+  //       ProductData.quantity = ProductData.quantity + 1;
+  //       const remaining = cart.filter(pd  => pd.id !== ProductData.id)
+  //       newCart = [...remaining , exists]
+  //     }
+  //     setCart(newCart);
+  //     addToDb(ProductData.id)
+  // } 
+
   return (
     <div className="shop_container">
         
