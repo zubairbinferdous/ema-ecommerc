@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-
+import { addToDb, getShoppingCart } from '../../utilities/fakedb.js';
 
 import Product from "../Product/Product.Jsx";
 import Side from "../Side/Side.jsx";
@@ -19,9 +20,17 @@ const Shop = () => {
       .then((data) => setProducts(data));
   }, []);
 
+  useEffect(() => {
+
+    const storageCart = getShoppingCart();
+    console.log(storageCart);
+
+  } ,[])
+
   const addToCart = (ProductData) => {
     const newCart = [...cart , ProductData]
     setCart(newCart);
+    addToDb(ProductData.id)
   } 
 
   return (
