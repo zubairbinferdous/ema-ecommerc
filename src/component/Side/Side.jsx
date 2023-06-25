@@ -5,7 +5,7 @@ import './Side.css';
 
 const Side = ({total}) => {
 
-    console.log(total)
+    // console.log(total)
     let price = 0 ;
     let shipping = 0 ;
     for (const ProductPrice of total) {

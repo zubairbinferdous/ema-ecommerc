@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 /* eslint-disable no-undef */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
@@ -11,8 +12,8 @@ import "./Shop.css";
 const Shop = () => {
 
   const [products, setProducts] = useState([]);
-  
   const [cart , setCart] = useState([]);
+
 
   useEffect(() => {
     fetch("products.json")
@@ -20,12 +21,27 @@ const Shop = () => {
       .then((data) => setProducts(data));
   }, []);
 
+
   useEffect(() => {
 
-    const storageCart = getShoppingCart();
-    console.log(storageCart);
+    const storedCart = getShoppingCart();
+    const saveCart = [] ;
+    for (const id in storedCart) {
 
-  } ,[])
+      const addedProduct = products.find( product => product.id === id);
+      if (addedProduct) {
+        const quantity = storedCart[id];
+        addedProduct.quantity = quantity
+        saveCart.push(addedProduct);
+      }
+      setCart(saveCart);
+
+
+    }
+
+  } ,[products])
+
+
 
   const addToCart = (ProductData) => {
     const newCart = [...cart , ProductData]
@@ -51,7 +67,7 @@ const Shop = () => {
       </div>
       
     </div>
-  );
+  ); 
 };
 
 export default Shop;
